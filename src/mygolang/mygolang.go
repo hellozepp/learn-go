@@ -94,7 +94,7 @@ xxx:
 xxx1:
 	for i := 1; i < 3; i++ {
 		for j := 1; j < 3; j++ {
-			if i+j == 5 {
+			if i+j == 2 {
 				continue xxx1
 			}
 			fmt.Println(i + j)
@@ -118,7 +118,6 @@ bbb:
 	fmt.Println(jj)
 
 	fmt.Println("========================５=======================")
-	//========================================================================
 	var ptr *int = &jj
 	fmt.Println(ptr, *ptr)
 }

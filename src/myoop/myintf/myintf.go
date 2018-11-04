@@ -6,7 +6,7 @@ import (
 )
 
 func Myintf() {
-	s := student{}
+	s := new(student)
 	s.id = 1
 	s.name = "aaa"
 	s.age = 22

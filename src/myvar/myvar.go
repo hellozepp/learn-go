@@ -20,7 +20,6 @@ func Myvar() {
 	fmt.Println(i2)
 
 	i3 := 123
-
 	fmt.Println(i3)
 
 	fmt.Println("========================1=======================")
@@ -31,17 +30,15 @@ func Myvar() {
 	fmt.Println(a1, c1)
 	fmt.Println("========================2=======================")
 	//========================================================================
-	var j = 10
+	var j = 0x16
 	fmt.Println("hello " + strconv.Itoa(j))
-	j1, _ := strconv.Atoi("123")
+	j1, _ := strconv.Atoi("1.1") // Array to Integer
 	fmt.Println(j1)
-
-	var k = 1.1
-	fmt.Println(int(k))
+	fmt.Println(int(j))
 
 	fmt.Println("========================3=======================")
 	//========================================================================
-	type size int
+	type size int //类型别名
 	var s size = 12
 	fmt.Println(s)
 
@@ -61,9 +58,9 @@ func Myvar() {
 		z3 = 123
 		//z4=len(zz) //由于zz不是常量，编译时无法取得立即数，所以无法在编译的时候计算len，因此无法为常量赋值
 	)
-	fmt.Println(z1, z2, z3)
+	fmt.Println(z1, z2, z3) //abc 3 123
 	const (
-		k1 = iota
+		k1 = iota //希腊字母。golang中定义常量经常用的iota关键字 默认递增值0开始
 		k2
 		k3 = 100
 		k4
@@ -74,10 +71,10 @@ func Myvar() {
 		k11 = iota
 		k21
 		k31
-		k41 = iota
+		k41
 	)
-	fmt.Println(k1, k2, k3, k4, k5, k6)
-	fmt.Println(k11, k21, k31, k41)
+	fmt.Println(k1, k2, k3, k4, k5, k6) //0 1 100 100 4 5
+	fmt.Println(k11, k21, k31, k41)     //0 1 2 3
 
 	fmt.Println("========================6=======================")
 	//========================================================================
@@ -110,13 +107,13 @@ func Myvar() {
 
 	fmt.Println("========================7=======================")
 	//========================================================================
-	f1, _ := strconv.ParseFloat("1.234", 64)
+	f1, _ := strconv.ParseFloat("1.234", 64) //1.234
 	fmt.Println(f1)
 
 	i, _ := strconv.ParseInt("123", 0, 64)
 	fmt.Println(i)
 
-	d, _ := strconv.ParseInt("0x1c8", 0, 64)
+	d, _ := strconv.ParseInt("0x1c8", 0, 64) //456
 	fmt.Println(d)
 
 	u, _ := strconv.ParseUint("789", 0, 64)
@@ -125,21 +122,22 @@ func Myvar() {
 	kk, _ := strconv.Atoi("135")
 	fmt.Println(kk)
 
-	_, e := strconv.Atoi("wat")
+	_, e := strconv.Atoi("wat") //strconv.Atoi: parsing "wat": invalid syntax
 	fmt.Println(e)
-
 	fmt.Println("========================8=======================")
 	//========================================================================
 
 	var aint int = 111
 	var aa *int = &aint
-	fmt.Println(aa, *aa)
+	fmt.Println(aa, *aa, *&aa)
 
 	var a1 int16 = 0x0102
 	var i22 = (*int8)(unsafe.Pointer(&a1))
-	fmt.Println(*i22)
+	fmt.Printf("%x \n", *i22) //2
+	var i222 = (*int)(unsafe.Pointer(&a1))
+	fmt.Printf("0x%4x \n", *i222) //258
 	var p1 = (int64)(uintptr(unsafe.Pointer(i22)))
-	fmt.Println(*(*int8)(unsafe.Pointer(uintptr(p1 + 1))))
+	fmt.Println(*(*int8)(unsafe.Pointer(uintptr(p1 + 1)))) //1
 
 	fmt.Println("========================9=======================")
 	//========================================================================

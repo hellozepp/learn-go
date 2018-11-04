@@ -8,14 +8,16 @@ import (
 func Mystruct() {
 	type person struct {
 		id   int
-		name string
+		name string `test:"张三"`
 	}
 	var p1 = person{1, "aaa"}
 	var p2 = person{}
 	p2.id = 2
-	p2.name = "bbb"
 	fmt.Println(p1, p2)
-
+	field, b := reflect.TypeOf(p2).FieldByName("name")
+	if b {
+		fmt.Println(field.Tag.Get("test"))
+	}
 	fmt.Println("========================1=======================")
 	//========================================================================
 	var p3 = new(person)
@@ -72,14 +74,6 @@ func Mystruct() {
 
 	fmt.Println("========================5=======================")
 	//========================================================================
-	var cartemp1 = struct {
-		int
-		string
-	}{1, "xxx"}
-	fmt.Println(cartemp1)
-
-	fmt.Println("======")
-
 	var cartemp2 = struct {
 		int
 		string
@@ -93,7 +87,7 @@ func Mystruct() {
 		string
 	}{2, "yyy"}}
 	fmt.Println(cartemp2)
-
+	fmt.Println("================")
 	fmt.Println(cartemp2.int, cartemp2.string, cartemp2.style.int, cartemp2.style.string)
 
 	fmt.Println("========================6=======================")

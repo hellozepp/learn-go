@@ -64,21 +64,21 @@ func Mycollection() {
 
 	fmt.Println("========================1=======================")
 	//========================================================================
-	//Silence
+	// slice 由函数 make 创建。这会分配一个零长度的数组并且返回一个 slice 指向这个数组
 	var a1 []int = make([]int, 3, 10) //长度3　容量10
 	fmt.Println(a1, len(a1), cap(a1))
 
 	fmt.Println("===1===")
 
-	var b1 = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	ab1 := b1[1:5]
+	var b1 = [11]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	ab1 := b1[0:5]
 	ab2 := b1[2:6]
 	ab1[1] = 999
-	fmt.Println(ab1, ab2, b1)
+	fmt.Println(ab1, ab2, b1[:])
 
 	fmt.Println("===2===")
-
-	ab1 = append(ab1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+	var ab3 = []int{0}
+	ab1 = append(ab3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 	ab1[1] = 888
 	fmt.Println(ab1, ab2, b1)
 
@@ -86,7 +86,7 @@ func Mycollection() {
 
 	var c1 = new([]int)
 	fmt.Println(c1)
-	//c1=append(c1,1,2,3,4,5)　//由于c1是指向[]int的指针，然而没有调用make的情况下，系统不可能给他一个数组去指，因此更谈不上追加，因为他是野指针
+	//c1 = append(c1, 1, 2, 3, 4, 5) //由于c1是指向[]int的指针，然而没有调用make的情况下，系统不可能给他一个数组去指，因此更谈不上追加，因为他是野指针
 	c1 = &ab1
 	var tmp []int
 	tmp = append(*c1, 1, 2, 3, 4, 5)
@@ -98,12 +98,7 @@ func Mycollection() {
 	var d1 = []int{1, 2, 3, 4, 5}
 	var e1 = []int{10, 20, 30}
 	copy(d1, e1)
-	fmt.Println(d1, e1)
-
-	var d11 = []int{1, 2, 3, 4, 5}
-	var e11 = []int{10, 20, 30}
-	copy(e11, d11)
-	fmt.Println(d11, e11)
+	fmt.Println(d1, e1) //[10 20 30 4 5] [10 20 30]
 
 	fmt.Println("========================2=======================")
 	//========================================================================
@@ -133,7 +128,7 @@ func Mycollection() {
 
 	fmt.Println("======")
 
-	var d2 = map[int]string{0: "aaa", 1: "bbb", 2: "ccc"}
+	var d2 = map[int]string{0: "aaa", 3: "bbb", 2: "ccc"} //原顺序
 	var e2 = new(map[int]string)
 	e2 = &d2
 	fmt.Println(e2)
@@ -142,11 +137,11 @@ func Mycollection() {
 	//========================================================================
 
 	var mylist *list.List = list.New()
-	mylist.PushBack("aaa")
-	mylist.PushFront("bbb")
-	mylist.PushFront("ccc")
-	ele := mylist.PushBack("eee")
-	mylist.PushBack("fff")
+	mylist.PushBack(40)
+	mylist.PushFront("3")
+	mylist.PushFront(2)
+	ele := mylist.PushBack("5")
+	mylist.PushBack("6")
 	mylist.Remove(ele)
 	for i := mylist.Front(); i != nil; i = i.Next() {
 		fmt.Println(i.Value)

@@ -1,8 +1,9 @@
 package main
 
 import (
+	"mycollection"
+	"myoop/myintf"
 	_ "myparallel/mygoroutine"
-	"zhanglin"
 )
 
 //例子程序如下：
@@ -27,16 +28,11 @@ func main() {
 	//zhanglin.PrintfTest()
 	//zhanglin.JsonTest()
 	//zhanglin.LogicTest()
-	zhanglin.AlignTest()
+	//zhanglin.AlignTest()
+	//mystruct.Mystruct()
 	//mystruct.Mystruct2()
-	//mycollection.Mycollection()
-	//mypkg.Mypkg()
-	//myintf.Myintf()
-
-	//myref.Myref()
 	//=========包================
 	//mypkg.Mypkg()
-
 	//=========变量================
 	//myvar.Myvar()
 
@@ -44,8 +40,8 @@ func main() {
 	//mygolang.Mygolang()
 
 	//=========集合================
-	//mycollection.Mycollection()
-	//mycollection.MySort()
+	mycollection.Mycollection()
+	mycollection.MySort()
 
 	//=========函数================
 	//myfunc.Myfunc()
@@ -64,7 +60,7 @@ func main() {
 	//mymethod.Finallizefunc()
 
 	//=========接口================
-	//myintf.Myintf()
+	myintf.Myintf()
 	//myintf.Myintf2()
 	//myintf.Myintf3()
 	//myintf.TestAAABBBCCC()
