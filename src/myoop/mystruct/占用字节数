@@ -1,0 +1,15 @@
+
+类型名称	有无符号	bit数
+int8	        Yes	         8
+int16	        Yes	         16
+int32	        Yes	         32
+int64	        Yes	         64
+uint8	        No	         8
+uint16	        No	         16
+uint32	        No	         32
+uint64	        No	         64
+int	            Yes	         等于cpu位数
+uint	        No	         等于cpu位数
+rune	        Yes	         与 int32 等价
+byte	        No	         与 uint8 等价
+uintptr	        No	         -

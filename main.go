@@ -1,7 +1,8 @@
 package main
 
 import (
-	"myparallel/mygoroutine"
+	_ "myparallel/mygoroutine"
+	"zhanglin"
 )
 
 //例子程序如下：
@@ -23,6 +24,10 @@ func main(){
 //./main.go: moved to heap :c
 //.........
 func main() {
+	//zhanglin.PrintfTest()
+	//zhanglin.JsonTest()
+	//zhanglin.LogicTest()
+	zhanglin.AlignTest()
 	//mystruct.Mystruct2()
 	//mycollection.Mycollection()
 	//mypkg.Mypkg()
@@ -78,7 +83,7 @@ func main() {
 	//myapi.MyUrlParser()
 
 	//=========并发================
-	mygoroutine.Mygoroutine()
+	//mygoroutine.Mygoroutine()
 	//mygoroutine.Myselect()
 	//myruntime.Myruntime()
 	//mysync.MyCountDownLunch()
