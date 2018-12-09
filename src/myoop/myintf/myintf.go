@@ -6,12 +6,23 @@ import (
 )
 
 func Myintf() {
+	var aa student
+	aa.id = 1
+	aaa := &aa
+	aaaa := new(student)
+	aaaa = (*student)(&aa)
+	fmt.Println(student{}, "\n2", new(student), "\n3", &aa, "\n4", aa, "\n5", aaa, "\n6", aaaa)
+	fmt.Println(&aa == aaa)
+	fmt.Println(&aa == aaaa)
+	fmt.Println(aaa == aaaa)
 	s := new(student)
 	s.id = 1
 	s.name = "aaa"
 	s.age = 22
 	str := s.dorun(100)
-	printinfo(str, s)
+	str1 := s.dojump(100)
+	printinfo(str, str1, &s)
+	printinfo(str, str1, s)
 
 	fmt.Println("========================1=======================")
 	//========================================================================
@@ -66,10 +77,11 @@ func dis2(obj ijump) {
 	fmt.Println(obj.dojump(200))
 }
 
-func printinfo(s string, obj interface{}) {
+func printinfo(s string, s1 string, obj interface{}) {
 	if v, ok := obj.(student); ok {
 		fmt.Println("hello " + v.name)
 		fmt.Println(s)
+		fmt.Println(s1)
 	} else {
 		fmt.Println("呵呵")
 	}

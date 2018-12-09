@@ -11,7 +11,7 @@ func Mydefer() {
 	defertest2()
 }
 
-func defertest1() int { //defer不会调用，仅仅会压入本地方法栈中，放在：｛所有栈变量之后，ret之前｝
+func defertest1() int { //defer不会调用，仅仅会压入本地方法栈中，放在：｛所有栈变量之后，ret之前｝先进后出
 	defer fmt.Println("a")
 	defer fmt.Println("b")
 	defer fmt.Println("c")

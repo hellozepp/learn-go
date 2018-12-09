@@ -9,7 +9,7 @@ type size int
 
 func (sz *size) dis() {
 	i := int(*sz)
-	*sz = 100
+	*sz = 100 //改变指向，不改栈内容
 	fmt.Println("num is " + strconv.Itoa(i))
 }
 func (sz size) dis1() {
@@ -20,10 +20,11 @@ func (sz size) dis1() {
 
 func Mymethod() {
 	var p = person{}
-	p.setidandname(1, "aaa")
-	(&p).setidandname(1, "aaa")
+	p.setidandname(1, "aa1")
+	(&p).setidandname(2, "aaa")
 	fmt.Println(p.getinfo(), p.name)
-	fmt.Println((&p).getinfo(), p.name)
+	fmt.Println(p, &p)
+	fmt.Println((&p).getinfo(), (&p).name)
 
 	fmt.Println("===========")
 

@@ -1,9 +1,10 @@
 package main
 
 import (
-	"mycollection"
 	"myoop/myintf"
+	"myoop/mystruct"
 	_ "myparallel/mygoroutine"
+	"myref"
 )
 
 //例子程序如下：
@@ -40,20 +41,17 @@ func main() {
 	//mygolang.Mygolang()
 
 	//=========集合================
-	mycollection.Mycollection()
-	mycollection.MySort()
+	//mycollection.Mycollection()
+	//mycollection.MySort()
 
 	//=========函数================
 	//myfunc.Myfunc()
 
 	//=========延迟================
 	//myfunc.Mydefer()
-
-	//=========错误处理================
-	//myexception.Myexception()
-
 	//=========类================
 	//mystruct.Mystruct()
+	mystruct.Mystruct2()
 
 	//=========方法================
 	//mymethod.Mymethod()
@@ -61,10 +59,13 @@ func main() {
 
 	//=========接口================
 	myintf.Myintf()
-	//myintf.Myintf2()
-	//myintf.Myintf3()
-	//myintf.TestAAABBBCCC()
-	//myref.Myref()
+	myintf.Myintf2()
+	myintf.Myintf3()
+	myintf.TestAAABBBCCC()
+	myref.Myref()
+
+	//=========错误处理================
+	//myexception.Myexception()
 
 	//=========基本api================
 	//myapi.MyReg()

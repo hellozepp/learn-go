@@ -51,6 +51,7 @@ func Myfunc() { //公有函数
 		return func(y int) int {
 			p++
 			x++
+			fmt.Println(p, x)
 			return x + y
 		}
 	}
@@ -84,7 +85,7 @@ func Myfunc() { //公有函数
 	fmt.Println("====2==")
 
 	funptrxx := new(funcc)
-	funptrxx = (*funcc)(&add)
+	funptrxx = (*funcc)(&add) //强转到自定义type指针
 	fmt.Println(opt(2, 2, *funptrxx))
 
 	fmt.Println("===3===")

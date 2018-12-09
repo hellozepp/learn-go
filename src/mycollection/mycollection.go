@@ -80,7 +80,7 @@ func Mycollection() {
 	var ab3 = []int{0}
 	ab1 = append(ab3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 	ab1[1] = 888
-	fmt.Println(ab1, ab2, b1)
+	fmt.Println(ab1)
 
 	fmt.Println("===3===")
 

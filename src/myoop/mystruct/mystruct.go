@@ -44,8 +44,8 @@ func Mystruct() {
 	fmt.Println(tmppersonptr, *tmppersonptr)
 	fmt.Println("========================3=======================")
 	//========================================================================
-	var o1 = Obj{1, "aaa"}
-	var o2 = &Obj{2, "bbb"}
+	var o1 = Obj{1, "aaa"}  //值传递
+	var o2 = &Obj{2, "bbb"} //引用传递
 	changeObj(o1, o2)
 	fmt.Println(o1, o2)
 
