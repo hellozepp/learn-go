@@ -1,10 +1,8 @@
 package main
 
 import (
-	"myoop/myintf"
-	"myoop/mystruct"
+	"myexception"
 	_ "myparallel/mygoroutine"
-	"myref"
 )
 
 //例子程序如下：
@@ -51,21 +49,21 @@ func main() {
 	//myfunc.Mydefer()
 	//=========类================
 	//mystruct.Mystruct()
-	mystruct.Mystruct2()
+	//mystruct.Mystruct2()
 
 	//=========方法================
 	//mymethod.Mymethod()
 	//mymethod.Finallizefunc()
 
 	//=========接口================
-	myintf.Myintf()
-	myintf.Myintf2()
-	myintf.Myintf3()
-	myintf.TestAAABBBCCC()
-	myref.Myref()
+	//myintf.Myintf()
+	//myintf.Myintf2()
+	//myintf.Myintf3()
+	//myintf.TestAAABBBCCC()
+	//myref.Myref()
 
 	//=========错误处理================
-	//myexception.Myexception()
+	myexception.Myexception()
 
 	//=========基本api================
 	//myapi.MyReg()

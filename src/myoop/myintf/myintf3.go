@@ -32,7 +32,6 @@ func Myintf3() {
 		"x1": new(AB1),
 		"x2": new(AB2),
 	}
-
 	for name, obj := range a {
 		f1, isA := obj.(A) //这样可以保证强制类型转换不会宕机
 		f2, isB := obj.(B)

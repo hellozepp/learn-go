@@ -6,6 +6,7 @@ import (
 
 type FuncCaller func(interface{}) interface{}
 
+//对type函数的实现方法
 func (f FuncCaller) call(p interface{}) interface{} {
 	return f(p)
 }

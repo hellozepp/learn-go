@@ -2,7 +2,7 @@ package b
 
 import (
 	"fmt"
-	"myoop/myintf/c"
+	"myoop/myintf/a"
 )
 
 type BBB struct {
@@ -13,10 +13,10 @@ func (a BBB) GetName() string {
 	return a.Name
 }
 
-//func (*BBB)DisBBB(obj * a.AAA) {
-//	fmt.Println(obj.Name)
-//}
-
-func (*BBB) DisBBB(obj interface{}) {
-	fmt.Println(obj.(c.CCC).GetName())
+func (*BBB) DisBBB(obj *a.AAA) {
+	fmt.Println(obj.Name)
 }
+
+//func (*BBB) DisBBB(obj interface{}) {
+//	fmt.Println(obj.(c.CCC).GetName())
+//}

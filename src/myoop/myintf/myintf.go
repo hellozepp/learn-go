@@ -12,9 +12,9 @@ func Myintf() {
 	aaaa := new(student)
 	aaaa = (*student)(&aa)
 	fmt.Println(student{}, "\n2", new(student), "\n3", &aa, "\n4", aa, "\n5", aaa, "\n6", aaaa)
-	fmt.Println(&aa == aaa)
-	fmt.Println(&aa == aaaa)
-	fmt.Println(aaa == aaaa)
+	fmt.Println(&aa == aaa)  //t
+	fmt.Println(&aa == aaaa) //t
+	fmt.Println(aaa == aaaa) //t
 	s := new(student)
 	s.id = 1
 	s.name = "aaa"
@@ -92,6 +92,6 @@ func printinfo(s string, s1 string, obj interface{}) {
 	case student:
 		fmt.Println(value.name + " is student")
 	default:
-		fmt.Println("呵呵")
+		fmt.Println(value)
 	}
 }

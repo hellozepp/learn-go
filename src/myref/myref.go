@@ -28,20 +28,28 @@ func (s student) Sayhello(toname string) (string, int) { //如果方法不是大
 func (s *student) Dis() { //*student不属于student 仅属于*student对象
 	fmt.Println(s)
 }
+
+type MyStruct struct {
+	name string
+}
+
+func (this *MyStruct) GetName() string {
+	return this.name
+}
 func Myref() {
 	s := student{person: person{int: 1, name: "aaa"}, age: 22}
 	t := reflect.TypeOf(s)
+	fmt.Println(t) //获取字段属性以及字段相关的东西
 	t11 := reflect.TypeOf(&s)
+	fmt.Println(t11)
 	k := reflect.TypeOf(s).Kind()
 	k1 := reflect.TypeOf(&s).Kind()
 	v := reflect.ValueOf(s)
 
 	fmt.Println(k) //类型
 	fmt.Println(k1)
-	fmt.Println(t) //获取字段属性以及字段相关的东西
-	fmt.Println(t11)
 	fmt.Println(v) //获取字段的值以及值相关的东西
-
+	fmt.Println(reflect.TypeOf(v))
 	fmt.Println("========================1=======================")
 	//========================================================================
 	for i := 0; i < t.NumField(); i++ {
@@ -99,7 +107,31 @@ func Myref() {
 	fmt.Println(t.FieldByIndex([]int{0, 0}), t.FieldByIndex([]int{0, 1}))
 	m2, _ := t.MethodByName("Sayhello")
 	fmt.Println(m2)
+	fmt.Println("===========mystruct==========")
+	a := new(MyStruct)
+	a.name = "hehe"
+	b1 := reflect.ValueOf(a).MethodByName("GetName").Call([]reflect.Value{})
+	ref := reflect.ValueOf(a).Elem()
+	typp := reflect.TypeOf(a).Elem()
+	fmt.Println(reflect.ValueOf(a))
+	fmt.Println(b1[0])
+	fmt.Println(ref.Kind())
+	for i := 0; i < ref.NumField(); i++ {
+		key := ref.Field(i)
+		fmt.Println(typp.Field(i).Name, key)
+	}
 
+	val := reflect.ValueOf(a).Elem().FieldByName("name")
+	fmt.Println(val)
+	fmt.Println(reflect.ValueOf(a).Elem().FieldByName("name").CanSet())
+	fmt.Println(reflect.ValueOf(&(a.name)).Elem().CanSet())
+
+	var c string = "yejianfeng"
+	p := reflect.ValueOf(&c)
+	fmt.Println(p.CanSet())        //false
+	fmt.Println(p.Elem().CanSet()) //true
+	p.Elem().SetString("newName")
+	fmt.Println(c)
 	fmt.Println("========================4=======================")
 	//========================================================================
 	x := 123
@@ -112,15 +144,18 @@ func Myref() {
 	s11 := student{person: person{int: 1, name: "aaa"}, age: 22, Sex: 1}
 	fmt.Println(s11)
 	v11 := reflect.ValueOf(&s11)
-	v11.Elem().FieldByName("age").CanSet()              //小写是只读
+	fmt.Println(v11.Elem().FieldByName("age").CanSet()) //小写是只读
 	fmt.Println(v11.Elem().FieldByName("Sex").CanSet()) //大写才是读写
 
 	if v11.Elem().FieldByName("age").CanSet() {
 		v11.Elem().FieldByName("age").SetInt(99)
+	} else {
+		fmt.Println("age cant set")
 	}
 	if v11.Elem().FieldByName("Sex").CanSet() {
 		v11.Elem().FieldByName("Sex").SetInt(2)
 	}
+	fmt.Println(v11)
 	fmt.Println(s11)
 
 	fmt.Println("===2===")
@@ -140,22 +175,14 @@ func Myref() {
 	b := reflect.ValueOf(s11).MethodByName("Sayhello").Call(params1)
 	fmt.Println(b[0], "|", b[1])
 
-	b1 := reflect.ValueOf(&s11).MethodByName("Dis").Call([]reflect.Value{})
-	fmt.Println(b1)
+	b2 := reflect.ValueOf(&s11).MethodByName("Dis").Call([]reflect.Value{})
+	fmt.Println(b2)
 
 	fmt.Println("========================5=======================")
-	//========================================================================
-
-	// TypeOf
-	str := "this is string"
-	fmt.Println(reflect.TypeOf(str)) // output: "string"
-
-	fmt.Println("======")
-
 	// object TypeOf
-	a := new(person)
-	a.name = "xxx"
-	typ := reflect.TypeOf(a)
+	a2 := new(person)
+	a2.name = "xxx"
+	typ := reflect.TypeOf(a2)
 	fmt.Println(typ)        // output: "*myref.person"
 	fmt.Println(typ.Elem()) // output: "myref.person"
 
