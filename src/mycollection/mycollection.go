@@ -3,6 +3,7 @@ package mycollection
 import (
 	"container/list"
 	"fmt"
+	"reflect"
 	"sync"
 	"unsafe"
 )
@@ -63,27 +64,39 @@ func Mycollection() {
 	fmt.Println(myvarptra, *myvarptra)
 
 	fmt.Println("========================1=======================")
-	//========================================================================
+	//数组：类型 [n]T 表示拥有 n 个 T 类型的值的数组。
+	var x = [3]int{1, 2, 3}
+	var y [3]int = x
+	fmt.Println(x, y)
+	y[0] = 999
+	fmt.Println(x, y)
+	// [1 2 3] [1 2 3]
+	//[1 2 3] [999 2 3]
+	x1 := [...]int{1, 2, 3}
+	y1 := x1[:]
+	fmt.Println(x1, "x1->type:", reflect.TypeOf(x1).Kind(), y1, "y1->type:", reflect.TypeOf(y1).Kind())
+	fmt.Println("========================数组 end=======================")
+	//切片：类型 []T 表示一个元素类型为 T 的切片。
 	// slice 由函数 make 创建。这会分配一个零长度的数组并且返回一个 slice 指向这个数组
 	var a1 []int = make([]int, 3, 10) //长度3　容量10
-	fmt.Println(a1, len(a1), cap(a1))
+	fmt.Println(a1, len(a1), cap(a1)) //[0 0 0] 3 10
 
 	fmt.Println("===1===")
 
 	var b1 = [11]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	ab1 := b1[0:5]
-	ab2 := b1[2:6]
-	ab1[1] = 999
-	fmt.Println(ab1, ab2, b1[:])
-
+	ab2 := b1[1:6]
+	b1[2] = 110
+	ab2[1] = 999
+	fmt.Println(ab1, ab2, b1[:])            //[0 1 999 3 4] [1 999 3 4 5] [0 1 999 3 4 5 6 7 8 9 10]
+	fmt.Println(reflect.TypeOf(ab1).Kind()) //slice
 	fmt.Println("===2===")
 	var ab3 = []int{0}
 	ab1 = append(ab3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 	ab1[1] = 888
-	fmt.Println(ab1)
-
+	fmt.Println(ab1) //[0 888 2 3 4 5 6 7 8 9 10]
+	fmt.Println(reflect.TypeOf(ab1).Kind())
 	fmt.Println("===3===")
-
 	var c1 = new([]int)
 	fmt.Println(c1)
 	//c1 = append(c1, 1, 2, 3, 4, 5) //由于c1是指向[]int的指针，然而没有调用make的情况下，系统不可能给他一个数组去指，因此更谈不上追加，因为他是野指针
@@ -91,7 +104,7 @@ func Mycollection() {
 	var tmp []int
 	tmp = append(*c1, 1, 2, 3, 4, 5)
 	c1 = &tmp
-	fmt.Println(c1)
+	fmt.Println(c1) //&[0 888 2 3 4 5 6 7 8 9 10 1 2 3 4 5]
 
 	fmt.Println("===4===")
 
@@ -99,6 +112,10 @@ func Mycollection() {
 	var e1 = []int{10, 20, 30}
 	copy(d1, e1)
 	fmt.Println(d1, e1) //[10 20 30 4 5] [10 20 30]
+	d1 = []int{1, 2}
+	e1 = []int{10, 20, 30}
+	copy(d1, e1)
+	fmt.Println(d1, e1) //[10 20] [10 20 30]
 
 	fmt.Println("========================2=======================")
 	//========================================================================
@@ -142,6 +159,7 @@ func Mycollection() {
 	mylist.PushFront(2)
 	ele := mylist.PushBack("5")
 	mylist.PushBack("6")
+	fmt.Println(ele, "  ", reflect.TypeOf(ele).Kind()) //&{0xc000070420 0xc000070360 0xc000070330 5}    ptr
 	mylist.Remove(ele)
 	for i := mylist.Front(); i != nil; i = i.Next() {
 		fmt.Println(i.Value)

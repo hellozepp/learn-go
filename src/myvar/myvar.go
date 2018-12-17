@@ -57,6 +57,7 @@ func Myvar() {
 		z2 = len(z1) //等同于写死３
 		z3 = 123
 		//z4=len(zz) //由于zz不是常量，编译时无法取得立即数，所以无法在编译的时候计算len，因此无法为常量赋值
+		//zz ="" //不能重新定义
 	)
 	fmt.Println(z1, z2, z3) //abc 3 123
 	const (

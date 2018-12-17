@@ -2,15 +2,24 @@ package myfunc
 
 import "fmt"
 
+/**
+defer的用法遵循3个原则
+1 在defer表达式被运算的同时，defer函数的参数也会被运算。立即运算
+2 defer函数在一个函数return之后遵循后进先出的调用原则
+3 defer函数可能会读取并赋值给所在函数的返回值
+*/
+
 func Mydefer() {
 
 	fmt.Println(defertest1())
 
 	fmt.Println("========================1=======================")
-	//========================================================================
 	defertest2()
+	fmt.Println("========================2=======================")
+	fmt.Println(c())
+	fmt.Println("========================3=======================")
+	fmt.Println(f1())
 }
-
 func defertest1() int { //defer不会调用，仅仅会压入本地方法栈中，放在：｛所有栈变量之后，ret之前｝先进后出
 	defer fmt.Println("a")
 	defer fmt.Println("b")
@@ -43,4 +52,32 @@ func defertest2() {
 	//10.执行3，打印======
 	//11.执行2，打印1
 	//12.执行1，打印0
+}
+func c() (i int) {
+	defer func() {
+		fmt.Println("i:", i)
+	}()
+	return 100
+}
+func f() (r int) {
+	t := 5
+	defer func() {
+		t = t + 5
+	}()
+	return t
+}
+func f1() (r int) {
+	defer func(r int) {
+		r = r + 5
+		fmt.Println("r:", r)
+	}(r)
+	return 1
+}
+func f2() (r int) {
+	r = 1         //给返回值赋值
+	func(r int) { //这里改的r是传值传进去的r，不会改变要返回的那个r值
+		r = r + 5
+		fmt.Println(r)
+	}(r)
+	return //空的return
 }

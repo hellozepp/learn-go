@@ -1,7 +1,7 @@
 package main
 
 import (
-	"myexception"
+	"myapi/bytes"
 	_ "myparallel/mygoroutine"
 )
 
@@ -59,13 +59,18 @@ func main() {
 	//myintf.Myintf()
 	//myintf.Myintf2()
 	//myintf.Myintf3()
+	//myintf.Myintf4()
 	//myintf.TestAAABBBCCC()
 	//myref.Myref()
 
 	//=========错误处理================
-	myexception.Myexception()
+	//myexception.Panic()
+	//myexception.Myexception()
 
 	//=========基本api================
+	bytes.BytesBase()
+	//bytes.BytesReader()
+	//bytes.BytesBuffer()
 	//myapi.MyReg()
 	//myapi.Mystr()
 	//myapi.Mytime()

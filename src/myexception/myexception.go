@@ -35,7 +35,7 @@ func Myexception() {
 	//========================================================================
 
 	//testexception1()
-	//testexception21()
+	testexception21()
 	testexception22()
 
 	fmt.Println("========================3=======================")
@@ -56,7 +56,7 @@ func testexception1() { //相当于不写try catch
 }
 func testexception21() { //相当于b21里面写了try catch,但是写错了
 	funca()
-	funcb21()
+	//funcb21()
 	funcc()
 }
 
@@ -97,7 +97,7 @@ func funca() {
 	fmt.Println("AAAAA")
 }
 func funcb1() {
-	panic("B error")
+	panic("testexception3 error")
 }
 
 func funcb21() {
@@ -118,18 +118,18 @@ func funcb21() {
 
 func funcb22() {
 	defer func() {
-		err := recover()
-		if err != nil {
+		if err := recover(); err != nil {
 			fmt.Println(err)
 		}
 	}()
 	panic("B error")
 	//分析：
 	/*
-
-		try{
-			panic("B error")
-		}catch(e){}
+			try{
+				panic("B error")
+			}catch(e){
+		print("B error")
+		}
 	*/
 }
 func funcc() {
