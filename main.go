@@ -2,6 +2,7 @@ package main
 
 import (
 	"myapi/bytes"
+	"mycollection"
 	_ "myparallel/mygoroutine"
 )
 
@@ -39,7 +40,7 @@ func main() {
 	//mygolang.Mygolang()
 
 	//=========集合================
-	//mycollection.Mycollection()
+	mycollection.Mycollection()
 	//mycollection.MySort()
 
 	//=========函数================

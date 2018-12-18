@@ -4,6 +4,8 @@ import (
 	"container/list"
 	"fmt"
 	"reflect"
+	"sort"
+	"strconv"
 	"sync"
 	"unsafe"
 )
@@ -125,10 +127,17 @@ func Mycollection() {
 
 	fmt.Println("======")
 
-	var b2 = map[int]string{0: "aaa", 1: "bbb", 2: "ccc"}
+	var b2 = map[int]string{0: "aaa", 3: "bbb", 2: "ccc"} //无序
+	var keys []int
 	for k, v := range b2 {
 		fmt.Println(k, v)
-		b2[k] = "ok"
+		keys = append(keys, k)
+		b2[k] = "ok" + strconv.Itoa(k)
+	}
+	sort.Ints(keys)
+	fmt.Println("手动拍许：")
+	for _, key := range keys {
+		fmt.Println(b2[key])
 	}
 	fmt.Println(b2)
 
