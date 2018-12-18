@@ -2,16 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/acroca/go-symbols" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/cweill/gotests" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/fatih/gomodifytags" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/golang/lint" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/nsf/gocode" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/ramya-rao-a/go-outline" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/rogpeppe/godef" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/sqs/goreturns" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/tpng/gopkgs" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/golang.org/x/tools" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/sourcegraph.com/sqs/goreturns" vcs="Git" />
   </component>
 </project>
