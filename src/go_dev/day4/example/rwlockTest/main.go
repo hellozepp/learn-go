@@ -21,17 +21,17 @@ func testMap() {
 	a[1] = 10
 	a[18] = 10
 
-	for i := 0; i < 2; i++ {
+	for i := 0; i < 10; i++ {
 		go func(b map[int]int) {
-			lock.Lock()
+			//lock.Lock()
 			b[8] = rand.Intn(100)
-			lock.Unlock()
+			//lock.Unlock()
 		}(a)
 	}
 
-	lock.Lock()
+	//lock.Lock()
 	fmt.Println(a)
-	lock.Unlock()
+	//lock.Unlock()
 
 	time.Sleep(time.Second)
 }
@@ -48,24 +48,24 @@ func testRWLock() {
 
 	for i := 0; i < 2; i++ {
 		go func(b map[int]int) {
-			//rwLock.Lock()
-			lock.Lock()
+			rwLock.Lock()
+			//lock.Lock()
 			b[8] = rand.Intn(100)
 			time.Sleep(10 * time.Millisecond)
-			lock.Unlock()
-			//rwLock.Unlock()
+			//lock.Unlock()
+			rwLock.Unlock()
 		}(a)
 	}
 
 	for i := 0; i < 100; i++ {
 		go func(b map[int]int) {
 			for {
-				lock.Lock()
-				//rwLock.RLock()
+				//lock.Lock()
+				rwLock.RLock()
 				time.Sleep(time.Millisecond)
 				//fmt.Println(a)
-				//rwLock.RUnlock()
-				lock.Unlock()
+				rwLock.RUnlock()
+				//lock.Unlock()
 				atomic.AddInt32(&count, 1)
 			}
 		}(a)

@@ -45,7 +45,7 @@ func testString() {
 
 func testModifyString() {
 	s := "我hello world"
-	s1 := []rune(s)
+	s1 := []int32(s) //type rune = int32
 
 	s1[0] = 200
 	s1[1] = 128

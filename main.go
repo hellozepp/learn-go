@@ -1,8 +1,7 @@
 package main
 
 import (
-	"myapi/bytes"
-	"mycollection"
+	"myapi"
 	_ "myparallel/mygoroutine"
 )
 
@@ -40,8 +39,9 @@ func main() {
 	//mygolang.Mygolang()
 
 	//=========集合================
-	mycollection.Mycollection()
+	//mycollection.Mycollection()
 	//mycollection.MySort()
+	//mycollection.TestMap()
 
 	//=========函数================
 	//myfunc.Myfunc()
@@ -69,10 +69,10 @@ func main() {
 	//myexception.Myexception()
 
 	//=========基本api================
-	bytes.BytesBase()
+	//bytes.BytesBase()
 	//bytes.BytesReader()
 	//bytes.BytesBuffer()
-	//myapi.MyReg()
+	myapi.MyReg()
 	//myapi.Mystr()
 	//myapi.Mytime()
 	//myapi.MyBase64()

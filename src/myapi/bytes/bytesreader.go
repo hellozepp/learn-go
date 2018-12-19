@@ -33,10 +33,10 @@ func BytesReader() {
 		if err == io.EOF {
 			break
 		}
-		println(string(b))
+		fmt.Println(string(b))
 	}
 
-	println("--------")
+	fmt.Println("--------")
 
 	b2 := []byte("hello 世界！")
 
@@ -47,22 +47,22 @@ func BytesReader() {
 		if err == io.EOF {
 			break
 		}
-		println(string(r))
+		fmt.Println(string(r))
 	}
 
 	b3 := []byte("string builder")
 	// Reset resets the Reader to be reading from b.
 	reader2.Reset(b3)
-	println(reader2.Len())
+	fmt.Println(reader2.Len())
 
-	println("--------")
+	fmt.Println("----Seek----")
 
 	reader3 := bytes.NewReader(b1)
 	// Seek 设置下一次 Read 或 Write 的偏移量为 offset，它的解释取决于 whence：
 	// 0 表示相对于文件的起始处，1 表示相对于当前的偏移，而 2 表示相对于其结尾处。
 	// Seek 返回新的偏移量和一个错误，如果有的话。
-	abs, err := reader3.Seek(-2, 2)
-	println(abs)
+	abs, err := reader3.Seek(-5, 2)
+	fmt.Println(abs) //第7个下标
 	b, _ := reader3.ReadByte()
-	println(string(b))
+	fmt.Println(string(b)) //倒数第五个
 }

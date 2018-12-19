@@ -3,8 +3,11 @@ package bytes
 import (
 	"bytes"
 	"fmt"
+	"unicode/utf8"
 )
 
+//byte 等同于int8，常用来处理ascii字符
+//rune 等同于int32,常用来处理unicode或utf-8字符
 func writeUInt16(buff []byte, data uint16) {
 	fmt.Println(buff, data)
 	for i := 0; i < 2; i++ {
@@ -90,18 +93,20 @@ func BytesBase() {
 	arr = bytes.Fields(buff6)
 	for _, v := range arr {
 		for _, t := range v {
-			fmt.Print(t)
+			fmt.Printf("%c", t)
 			fmt.Print(",")
 		}
 		fmt.Println("|")
 	}
-
+	a1, b := 2, 3
+	max := If(a1 > b, a, b).(int)
+	println(max)
 	// FieldsFunc 以一个或多个连续的满足 f(rune) 的字符为分隔符，
 	// 将 s 切分成多个子串，结果中不包含分隔符本身
 	// 如果 s 中没有满足 f(rune) 的字符，则返回一个空列表
-	fmt.Println("------------")
-	buff7 := []byte("abcabcabcabc")
-	arr = bytes.FieldsFunc(buff7, spilt)
+	fmt.Println("------bytes.FieldsFunc-----")
+	buff7 := []byte("abcabcabcabc\nb123\nc123\tx123")
+	arr = bytes.FieldsFunc(buff7, func(r rune) bool { return If(r == 'c', true, false).(bool) })
 	for _, v := range arr {
 		for _, t := range v {
 			fmt.Print(t)
@@ -114,13 +119,15 @@ func BytesBase() {
 	// 将 s 切分为 Unicode 码点列表
 	data := bytes.Runes(buff8)
 	for _, elem := range data {
-		fmt.Println(string(elem))
+		fmt.Println(utf8.RuneCountInString(string(elem)), len(string(elem)), string(elem))
 	}
-
+	fmt.Println("--------bytes.Title--------")
 	// Title 将 s 中的所有单词的首字母修改为其 Title 格式
 	buff9 := bytes.Title(buff7)
 	fmt.Println(string(buff9))
-
+	buff9[0] = 'Y'
+	fmt.Println(string(buff7))
+	fmt.Println("========== bytes.Map===========")
 	// Map 将 s 中满足 mapping(rune) 的字符替换为 mapping(rune) 的返回值
 	// 如果 mapping(rune) 返回负数，则相应的字符将被删除
 	buff10 := bytes.Map(func(r rune) rune {
@@ -130,4 +137,11 @@ func BytesBase() {
 		return r
 	}, buff7)
 	fmt.Println(string(buff10))
+}
+
+func If(condition bool, trueVal, falseVal interface{}) interface{} {
+	if condition {
+		return trueVal
+	}
+	return falseVal
 }

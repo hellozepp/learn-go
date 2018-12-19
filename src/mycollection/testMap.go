@@ -1,4 +1,4 @@
-package main
+package mycollection
 
 import "fmt"
 
@@ -6,7 +6,7 @@ func testMap() {
 	var a map[string]string = map[string]string{
 		"key": "value",
 	}
-	//a := make(map[string]string, 10)
+	//a = make(map[string]string, 10)
 	a["abc"] = "efg"
 	a["abc"] = "efg"
 	a["abc1"] = "efg"
@@ -85,10 +85,10 @@ func testMap5() {
 	fmt.Println(a)
 }
 
-func main() {
-	//testMap()
+func TestMap() {
+	testMap()
 	//testMap2()
 	//testMap3()
 	//testMap4()
-	testMap5()
+	//testMap5()
 }
