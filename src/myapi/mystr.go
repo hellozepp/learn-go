@@ -21,8 +21,9 @@ func Mystr() {
  * author : RoadToTheExpert
  */
 func str_sample() {
-	str := "Hello"
+	var str string = "Hello"
 	str += "World"
+	str = str + "!"
 
 	fmt.Println("字符串相加:", str)
 	fmt.Println("计算字符串长度：", len(str))
