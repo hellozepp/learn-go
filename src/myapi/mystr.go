@@ -30,10 +30,9 @@ func str_sample() {
 	fmt.Printf("获取对应下标字符： %c  %d \n", str[0], str[1])
 
 	//字符串遍历
-	r := []rune(str + "中国")
 	fmt.Println("兼容unicode的字符串遍历：")
-	for i := 0; i < len(r); i++ {
-		fmt.Println(string(r[i]), r[i])
+	for _, v := range []rune("中国") {
+		fmt.Println(string(v), v)
 	}
 
 	//字符串转整数
@@ -70,8 +69,6 @@ func str_sample() {
  * strings包函数使用。
  */
 func string_function_sample() {
-	//该函数代码收集自互联网
-
 	fmt.Println("查找子串是否在指定的字符串中")
 	fmt.Println(" Contains 函数的用法")
 	fmt.Println(strings.Contains("seafood", "foo")) //true
@@ -230,7 +227,8 @@ func string_function_sample() {
 
 	fmt.Println("")
 	fmt.Println(" Trim 函数的用法")
-	fmt.Printf("[%q]", strings.Trim(" !!! Achtung !!! ", "! ")) // ["Achtung"]
+	fmt.Printf("[%q]", strings.Trim(" !!! Achtung !!! ", "! A")) // ["Achtung"]
+	fmt.Printf("[%q]", strings.Trim(" !!! Achtung !!! ", "\b"))  // ["Achtung"]
 
 	fmt.Println("")
 	fmt.Println(" TrimLeft 函数的用法")
@@ -238,6 +236,7 @@ func string_function_sample() {
 
 	fmt.Println("")
 	fmt.Println(" TrimSpace 函数的用法")
-	fmt.Println(strings.TrimSpace(" tn a lone gopher ntrn")) // a lone gopher
+	fmt.Printf("[%q]", strings.TrimSpace(" tn a lone gopher \n\t\r\n")) // a lone gopher
+	fmt.Println("ok!")
 
 }
