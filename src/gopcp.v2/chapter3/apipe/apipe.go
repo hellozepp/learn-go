@@ -14,6 +14,7 @@ func main() {
 	runCmdWithPipe()
 }
 
+//匿名管道
 func runCmdWithPipe() {
 	fmt.Println("Run command `ps aux | grep apipe`: ")
 	cmd1 := exec.Command("ps", "aux")

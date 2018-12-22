@@ -7,13 +7,16 @@ import (
 	"time"
 )
 
+//命名管道
 func main() {
 	fileBasedPipe()
 	inMemorySyncPipe()
 }
 
+//*os.File rw类型,反向写入读取会报空指针
+//并发执行写阻塞读
 func fileBasedPipe() {
-	reader, writer, err := os.Pipe()
+	reader, writer, err := os.Pipe() //支持多路复用,不保证原子性
 	if err != nil {
 		fmt.Printf("Error: Couldn't create the named pipe: %s\n", err)
 	}
