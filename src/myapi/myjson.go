@@ -1,6 +1,9 @@
 package myapi
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"reflect"
+)
 import "fmt"
 import "os"
 
@@ -52,11 +55,15 @@ func MyJson() {
 	byt := []byte(`{"num":6.13,"strs":["a","b"]}`)
 
 	var dat map[string]interface{}
-
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println(err)
+		}
+	}()
 	if err := json.Unmarshal(byt, &dat); err != nil {
 		panic(err)
 	}
-	fmt.Println(dat)
+	fmt.Println(reflect.TypeOf(&dat), "-----", dat) // map[num:6.13 strs:[a b]]
 
 	num := dat["num"].(float64)
 	fmt.Println(num)

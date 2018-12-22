@@ -1,7 +1,7 @@
 package main
 
 import (
-	"myapi"
+	"myparallel/mygoroutine"
 	_ "myparallel/mygoroutine"
 )
 
@@ -67,24 +67,25 @@ func main() {
 	//=========错误处理================
 	//myexception.Panic()
 	//myexception.Myexception()
+	//myexception.DeferTest()
 
 	//=========基本api================
 	//bytes.BytesBase()
 	//bytes.BytesReader()
 	//bytes.BytesBuffer()
 	//myapi.Mystr()
-	myapi.MyReg()
+	//myapi.MyString2()
+	//myapi.MyReg()
 	//myapi.Mytime()
-	//myapi.MyBase64()
 	//myapi.MyJson()
 	//myapi.MyLineFilter()
 	//myapi.MyRandom()
 	//myapi.MySha1()
-	//myapi.MyString2()
+	//myapi.MyBase64()
 	//myapi.MyUrlParser()
 
 	//=========并发================
-	//mygoroutine.Mygoroutine()
+	mygoroutine.Mygoroutine()
 	//mygoroutine.Myselect()
 	//myruntime.Myruntime()
 	//mysync.MyCountDownLunch()

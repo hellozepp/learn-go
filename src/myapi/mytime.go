@@ -6,10 +6,10 @@ import (
 )
 
 func Mytime() {
-	now := time.Now()
-	secs := now.Unix()
-	nanos := now.UnixNano()
-	fmt.Println(now)
+	now := time.Now()       //2018-12-21 17:52:33.400996 +0800 CST m=+0.001741123
+	secs := now.Unix()      //1545385953
+	nanos := now.UnixNano() //1545385953400
+	fmt.Println(now)        //1545385953400996000
 	millis := nanos / 1000000
 	fmt.Println(secs)
 	fmt.Println(millis)
@@ -47,7 +47,8 @@ func Mytime() {
 
 	//格式化为字符串,tm为Time类型
 	tm := time.Unix(timestamp, 0)
-	fmt.Println(tm.Format("2006-01-02 03:04:05 PM"))
+	fmt.Println(tm)
+	fmt.Println(tm.Format("2006-01-02 03:04:05 PM")) //2018-12-22 01:39:27 PM
 	fmt.Println(tm.Format("02/01/2006 15:04:05 PM"))
 
 	//从字符串转为时间戳，第一个参数是格式，第二个是要转换的时间字符串

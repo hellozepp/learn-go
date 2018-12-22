@@ -2,7 +2,7 @@ package myapi
 
 import (
 	"fmt"
-	iconv "github.com/djimenez/iconv-go" //go get github.com/djimenez/iconv-go
+	"github.com/djimenez/iconv-go" //go get github.com/djimenez/iconv-go
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -24,12 +24,16 @@ func MyReg() {
 	fmt.Println("========================2=======================")
 	//========================================================================
 	//对正则表达式类扩展一个获得所有命名信息的方法，并使用它
-	var myExp2 = myRegexp{regexp.MustCompile(`(?P<first>\d+)\.(\d+).(?P<second>\d+)`)}
+	var myExp2 = myRegexp{regexp.MustCompile(`(?P<first>\d+).(\d+).(?P<second>\d+)`)}
 	mmap := myExp2.FindStringSubmatchMap("1234.5678.9")
 	ww := mmap["first"]
 	fmt.Println(mmap)
 	fmt.Println(ww)
 
+	var s = "MemTotal: 1001332 kB"
+	var valid = regexp.MustCompile("(?P<number>[0-9])")
+	fmt.Println(valid.FindAllStringSubmatch(s, -1))
+	fmt.Println(valid.FindStringSubmatch(s))
 	fmt.Println("========================3=======================")
 	//========================================================================
 	//抓取限号信息，并记录到一个Map中

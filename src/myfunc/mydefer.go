@@ -12,13 +12,13 @@ defer的用法遵循3个原则
 func Mydefer() {
 
 	fmt.Println(defertest1())
-
 	fmt.Println("========================1=======================")
-	defertest2()
+	defertest()
 	fmt.Println("========================2=======================")
 	fmt.Println(c())
 	fmt.Println("========================3=======================")
-	fmt.Println(f1())
+	fmt.Println(f())
+	fmt.Println("f1:", f1())
 }
 func defertest1() int { //defer不会调用，仅仅会压入本地方法栈中，放在：｛所有栈变量之后，ret之前｝先进后出
 	defer fmt.Println("a")
@@ -27,7 +27,7 @@ func defertest1() int { //defer不会调用，仅仅会压入本地方法栈中�
 	return 1
 }
 
-func defertest2() {
+func defertest() {
 	for i := 0; i < 2; i++ {
 		defer fmt.Println(i)
 	}
@@ -55,7 +55,7 @@ func defertest2() {
 }
 func c() (i int) {
 	defer func() {
-		fmt.Println("i:", i)
+		fmt.Println("i:", i) ////100
 	}()
 	return 100
 }
@@ -67,15 +67,14 @@ func f() (r int) {
 	return t
 }
 func f1() (r int) {
-	defer func(r int) {
+	defer func() { //该返回值,在return之后
 		r = r + 5
-		fmt.Println("r:", r)
-	}(r)
+	}()
 	return 1
 }
 func f2() (r int) {
-	r = 1         //给返回值赋值
-	func(r int) { //这里改的r是传值传进去的r，不会改变要返回的那个r值
+	r = 1               //给返回值赋值
+	defer func(r int) { //这里改的r是传值传进去的r，不会改变要返回的那个r值
 		r = r + 5
 		fmt.Println(r)
 	}(r)

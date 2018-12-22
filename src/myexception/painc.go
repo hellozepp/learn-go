@@ -17,7 +17,6 @@ func f() {
 		fmt.Println("defer start")
 		if err := recover(); err != nil {
 			fmt.Println(err) //这里的err其实就是panic传入的内容，"this is bug"
-
 		}
 		fmt.Println("defer end")
 
