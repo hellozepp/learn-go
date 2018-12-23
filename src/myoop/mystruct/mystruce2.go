@@ -5,7 +5,7 @@ import (
 	"unsafe"
 )
 
-func Mystruct2() {
+func Mystruct22() {
 	type person struct {
 		id   int
 		name string
