@@ -1,7 +1,7 @@
 package test
 
 import (
-	_ "crawl_movie/routers"
+	_ "beegoDemo/routers"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"

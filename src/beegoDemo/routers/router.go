@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"crawl_movie/controllers"
+	"beegoDemo/controllers"
 	"github.com/astaxie/beego"
 )
 

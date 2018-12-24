@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "crawl_movie/routers"
+	_ "beegoDemo/routers"
 	"github.com/astaxie/beego"
 )
 

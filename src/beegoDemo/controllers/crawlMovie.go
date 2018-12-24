@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"crawl_movie/models"
+	"beegoDemo/models"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/httplib"
 	"time"
