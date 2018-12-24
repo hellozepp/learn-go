@@ -11,7 +11,9 @@ func Mygoroutine() {
 	go myrun1(&c1)
 	v, err := <-c1
 	fmt.Println(v, err)
-
+	if !err {
+		fmt.Println("error")
+	}
 	fmt.Println("========================1=======================")
 	//========================================================================
 	c2 := make(chan int, 2)
