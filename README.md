@@ -1,2 +1,2 @@
 # iotestgo
-go语言测试api
+Learn go 1.11 Sample Code
