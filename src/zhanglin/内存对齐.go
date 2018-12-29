@@ -56,7 +56,7 @@ func AlignTest() {
 	So(unsafe.Sizeof(struct{ i8 int8 }{}), ShouldEqual, 1)
 	// |x---|xxxx|xx--|
 	So(unsafe.Sizeof(struct {
-		i8  int8
+		i8  int8 //bit
 		i32 int32
 		i16 int16
 	}{}), ShouldEqual, 12)
@@ -91,6 +91,6 @@ func AlignTest() {
 	call3()
 	call4()
 }
-func So(sizeof uintptr, b bool, i int) {
-	fmt.Println(sizeof == uintptr(i) && b)
+func So(sizeof uintptr, b bool, bytes int) {
+	fmt.Println(sizeof == uintptr(bytes) && b)
 }

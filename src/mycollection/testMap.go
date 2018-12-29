@@ -91,4 +91,8 @@ func TestMap() {
 	//testMap3()
 	//testMap4()
 	//testMap5()
+	mString := make(map[int]map[string]string)
+	mString[0] = make(map[string]string)
+	mString[0]["bid"] = "bidd"
+	fmt.Println(mString)
 }

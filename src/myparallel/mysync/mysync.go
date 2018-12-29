@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func MyCountDownLunch() {
+func WaitGroupTest() {
 	wg := sync.WaitGroup{}
 	wg.Add(10)
 
@@ -19,5 +19,5 @@ func MyCountDownLunch() {
 	}
 
 	wg.Wait()
-
+	fmt.Println("WaitGroup is ok !")
 }

@@ -11,7 +11,7 @@ func MyTcpClient() {
 	service := "localhost:5000"
 	tcpAddr, err := net.ResolveTCPAddr("tcp4", service)
 	checkErrcli(err)
-	conn, err := net.DialTCP("tcp", nil, tcpAddr)
+	conn, err := net.DialTCP("tcp", nil, tcpAddr) //dial打电话，拨电话号码;
 	defer conn.Close()
 	checkErrcli(err)
 	rAddr := conn.RemoteAddr()

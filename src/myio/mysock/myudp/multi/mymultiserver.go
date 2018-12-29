@@ -7,7 +7,7 @@ import (
 
 func MyMultiServer() {
 	//如果第二参数为nil,它会使用系统指定多播接口，但是不推荐这样使用
-	addr, err := net.ResolveUDPAddr("udp", "224.0.0.250:9981")
+	addr, err := net.ResolveUDPAddr("udp", ":9981")
 	if err != nil {
 		fmt.Println(err)
 	}

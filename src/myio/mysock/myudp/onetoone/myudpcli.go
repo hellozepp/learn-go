@@ -16,4 +16,7 @@ func MyUdpCli() {
 	defer conn.Close()
 	conn.Write([]byte("hello"))
 	fmt.Printf("<%s>\n", conn.RemoteAddr())
+	var buff [512]byte
+	n, _ := conn.Read(buff[0:])
+	fmt.Println(string(buff[0:n]))
 }

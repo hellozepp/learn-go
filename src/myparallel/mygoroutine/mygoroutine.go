@@ -27,10 +27,10 @@ func Mygoroutine() {
 
 	fmt.Println("========================2=======================")
 	//========================================================================
-	crw := make(chan int)
+	crw := make(chan int, 10000)
 	go send(crw)
 	go recv(crw)
-	time.Sleep(3 * time.Second)
+	time.Sleep(5 * time.Second)
 
 	fmt.Println("========================3=======================")
 	//========================================================================
@@ -64,14 +64,20 @@ func myrun2(c *chan int) {
 
 //只能向chan里写数据
 func send(c chan<- int) {
-	for i := 0; i < 5; i++ {
+	fmt.Println("send send...")
+	for i := 0; i < 10000; i++ {
 		c <- i
 	}
+	fmt.Println("send is ok!")
 }
 
 //只能取channel中的数据
 func recv(c <-chan int) {
+	fmt.Println("start receive ...")
 	for i := range c {
-		fmt.Println(i)
+		if i < 10 {
+			fmt.Println(i)
+		}
 	}
+	fmt.Println("receive is ok !")
 }

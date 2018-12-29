@@ -1,7 +1,7 @@
 package main
 
 import (
-	"myparallel/mygoroutine"
+	"myio/mysock/myudp/multi"
 	_ "myparallel/mygoroutine"
 )
 
@@ -85,10 +85,13 @@ func main() {
 	//myapi.MyUrlParser()
 
 	//=========并发================
-	mygoroutine.Mygoroutine()
+	//mygoroutine.Mygoroutine1()
+	//mygoroutine.Mygoroutine2()
+	//mygoroutine.TestGoroutine()
 	//mygoroutine.Myselect()
 	//myruntime.Myruntime()
-	//mysync.MyCountDownLunch()
+	//myruntime.NumCpuTest()
+	//mysync.WaitGroupTest()
 	//mysync.MyMutx()
 	//mysync.MyRWLock()
 	//mysync.MyAtomic()
@@ -110,12 +113,12 @@ func main() {
 	//mycmdline.Mycmdline()
 
 	//=========网络io================
-	//mytcp.MyTcpServer()
-	//mytcp.MyTcpClient()
-	//onetoone.MyUdpServer()
+	//go mytcp.MyTcpServer()
+	// mytcp.MyTcpClient()
+	//go onetoone.MyUdpServer()
 	//onetoone.MyUdpCli()
-	//multi.MyMultiServer()
-	//multi.MyMultiCli()
+	multi.MyMultiServer()
+	multi.MyMultiCli()
 	//broadcast.MyBCServer()
 	//broadcast.MyBCCli()
 
