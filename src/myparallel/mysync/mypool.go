@@ -1,13 +1,11 @@
 package mysync
 
 import (
-	"bytes"
 	"fmt"
 	"log"
 	"reflect"
 	"runtime"
 	"runtime/debug"
-	"strings"
 	"sync"
 	"sync/atomic"
 )
@@ -55,52 +53,4 @@ func MyPooltest() {
 	v4 := pool.Get()
 
 	fmt.Println(v4)
-}
-
-type Dao struct {
-	bp sync.Pool //不能自由控制Pool中元素的数量，放进Pool中的对象每次GC发生时都会被清理掉
-}
-
-func New(c *conf.Config) (d *Dao) {
-	d = &Dao{
-		bp: sync.Pool{
-			New: func() interface{} {
-				return &bytes.Buffer{}
-			},
-		},
-	}
-	return
-}
-
-var defaultSpliter string = ","
-var defaultReplacer string = " "
-
-var ErrType error
-
-func (d *Dao) Infoc(args ...string) (value string, err error) {
-	if len(args) == 0 {
-		return
-	}
-	// fetch a buf from bufpool
-	buf, ok := d.bp.Get().(*bytes.Buffer)
-	if !ok {
-		return "", ErrType
-	}
-	// append first arg
-	if _, err := buf.WriteString(args[0]); err != nil {
-		return "", err
-	}
-	for _, arg := range args[1:] {
-		// append ,arg
-		if _, err := buf.WriteString(defaultSpliter); err != nil {
-			return "", err
-		}
-		if _, err := buf.WriteString(strings.Replace(arg, defaultSpliter, defaultReplacer, -1)); err != nil {
-			return "", err
-		}
-	}
-	value = buf.String()
-	buf.Reset()
-	d.bp.Put(buf)
-	return
 }

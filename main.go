@@ -1,8 +1,8 @@
 package main
 
 import (
-	"myio/mysock/myudp/multi"
 	_ "myparallel/mygoroutine"
+	"myparallel/mysync"
 )
 
 //例子程序如下：
@@ -94,7 +94,7 @@ func main() {
 	//mysync.WaitGroupTest()
 	//mysync.MyMutx()
 	//mysync.MyRWLock()
-	//mysync.MyAtomic()
+	mysync.MyAtomic()
 	//mysync.MyOnce()
 	//mysync.MyOnce2()
 	//mysync.MyPooltest()
@@ -117,8 +117,8 @@ func main() {
 	// mytcp.MyTcpClient()
 	//go onetoone.MyUdpServer()
 	//onetoone.MyUdpCli()
-	multi.MyMultiServer()
-	multi.MyMultiCli()
+	//go multi.MyMultiServer()
+	//multi.MyMultiCli()
 	//broadcast.MyBCServer()
 	//broadcast.MyBCCli()
 
