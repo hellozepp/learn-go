@@ -1,0 +1,5 @@
+admin.nodeInfo.enode
+admin.peers
+admin.addPeer("enode://deb1be26589bac8f6315776363950df390854e18e1212b49d35ef886ad75210e34869cf0bd51228b54a4e63aac416d31dc42675698a6c31df8db1d075652a9be@[::]:3334");
+admin.peers
+web3.net.peerCount

@@ -1,9 +1,6 @@
 package main
 
-import (
-	_ "myparallel/mygoroutine"
-	"myparallel/mysync"
-)
+import "mycollection"
 
 //例子程序如下：
 /*
@@ -39,7 +36,7 @@ func main() {
 	//mygolang.Mygolang()
 
 	//=========集合================
-	//mycollection.Mycollection()
+	mycollection.Mycollection()
 	//mycollection.MySort()
 	//mycollection.TestMap()
 
@@ -94,7 +91,7 @@ func main() {
 	//mysync.WaitGroupTest()
 	//mysync.MyMutx()
 	//mysync.MyRWLock()
-	mysync.MyAtomic()
+	//mysync.MyAtomic()
 	//mysync.MyOnce()
 	//mysync.MyOnce2()
 	//mysync.MyPooltest()

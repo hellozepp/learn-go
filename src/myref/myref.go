@@ -69,12 +69,6 @@ func Myref() {
 			fmt.Println(key.Name, key.Type, "|", val)
 		}
 	}
-	fmt.Println("======")
-
-	for i := 0; i < t.NumMethod(); i++ { //仅能获取非指针对象的引用方法
-		m := t.Method(i)
-		fmt.Println(m.Name, m.Type)
-	}
 
 	fmt.Println("========================2=======================")
 	//========================================================================
@@ -110,11 +104,12 @@ func Myref() {
 	fmt.Println("===========mystruct==========")
 	a := new(MyStruct)
 	a.name = "hehe"
-	b1 := reflect.ValueOf(a).MethodByName("GetName").Call([]reflect.Value{})
+	fmt.Println(reflect.ValueOf(a))
+	//b1 := reflect.ValueOf(a).MethodByName("GetName").Call([]reflect.Value{})
+	b1 := reflect.ValueOf(a).MethodByName("GetName").Call(nil)
 	ref := reflect.ValueOf(a).Elem()
 	typp := reflect.TypeOf(a).Elem()
-	fmt.Println(reflect.ValueOf(a))
-	fmt.Println(b1[0])
+	fmt.Println(b1[0]) //反射调用
 	fmt.Println(ref.Kind())
 	for i := 0; i < ref.NumField(); i++ {
 		key := ref.Field(i)
@@ -122,7 +117,7 @@ func Myref() {
 	}
 
 	val := reflect.ValueOf(a).Elem().FieldByName("name")
-	fmt.Println(val)
+	fmt.Println("name---->", val)
 	fmt.Println(reflect.ValueOf(a).Elem().FieldByName("name").CanSet())
 	fmt.Println(reflect.ValueOf(&(a.name)).Elem().CanSet())
 
