@@ -10,7 +10,7 @@ contract Animal {
     }
 
     function Animal() public {
-        _age = 100;
+        _age = 200;
     }
 
 }
@@ -26,7 +26,7 @@ contract Animal1 {
 
 }
 //合约可以多继承,函数只能访问public 变量只能访问public,internal
-contract Cat is Animal, Animal1 {
+contract Cat is Animal, Animal1 { //菱形继承
 
     function age() view public returns (uint) { //合约重写
 
